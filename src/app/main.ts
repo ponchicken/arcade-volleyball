@@ -1,20 +1,17 @@
 import p5 from 'p5'
 
+import Setup from './Setup'
+import Draw from './Draw'
+
 const appEl = document.getElementById('app')
 
 const sketch = (p: p5) => {
-  const radius = 50
-  const diameter = radius * 2
-
-  p.setup = function() {
-    p.createCanvas(800, 400)
+  p.setup = () => {
+    Setup(p)
   }
 
-  p.draw = function() {
-    p.background(0)
-    p.fill(255)
-
-    p.circle(p.mouseX, p.mouseY, diameter)
+  p.draw = () => {
+    Draw(p)
   }
 }
 
