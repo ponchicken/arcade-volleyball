@@ -5,7 +5,7 @@ import { Create, Preload, Update } from './Setup'
 var config = {
   type: Phaser.AUTO,
   width: 800,
-  height: 600,
+  height: 400,
   scene: {
     preload: Preload,
     create: Create,
