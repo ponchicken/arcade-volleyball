@@ -1,2 +1,2 @@
 import './assets/styles/main.css'
-import './app/main'
+import './phaser/main'
