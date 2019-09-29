@@ -5,11 +5,13 @@ import bombImage from '~/assets/images/bomb.png'
 import dudeImage from '~/assets/images/dude.png'
 
 export function Preload () {
-  this.load.image('sky', skyImage)
-  this.load.image('ground', groundImage)
-  this.load.image('star', startImage)
-  this.load.image('bomb', bombImage)
-  this.load.spritesheet('dude',
+  const scene: Phaser.Scene = this
+
+  scene.load.image('sky', skyImage)
+  scene.load.image('ground', groundImage)
+  scene.load.image('star', startImage)
+  scene.load.image('bomb', bombImage)
+  scene.load.spritesheet('dude',
     dudeImage,
     { frameWidth: 32, frameHeight: 48 }
   )
