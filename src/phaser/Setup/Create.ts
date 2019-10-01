@@ -1,12 +1,12 @@
 import 'phaser'
 
-let platforms: Phaser.GameObjects.Group, player: Phaser.Physics.Arcade.Sprite
+let platforms: Phaser.GameObjects.Group,
+  player: {
+    body: Phaser.Physics.Arcade.Body
+  }
 
 export function Create () {
   const scene: Phaser.Scene = this
-
-  scene.add.image(400, 300, 'sky')
-  scene.add.image(400, 300, 'star')
 
   platforms = scene.physics.add.staticGroup()
 
@@ -18,11 +18,15 @@ export function Create () {
   platforms.create(50, 180, 'ground')
   platforms.create(750, 120, 'ground')
 
-  player = scene.physics.add.sprite(100, 300, 'dude')
+  // player = scene.physics.add.sprite(100, 300, 'dude')
+  player = scene.physics.add.existing(
+    scene.add.ellipse(50, 50, 50, 50, 0x55555555),
+    false
+  )
 
-  player.setBounce(0.3)
-  player.setCollideWorldBounds(true)
-  player.setGravityY(500)
+  player.body.setBounce(1, 0.3)
+  player.body.setCollideWorldBounds(true)
+  player.body.setGravityY(500)
 
   scene.anims.create({
     key: 'left',

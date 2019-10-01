@@ -19,7 +19,7 @@
       "./node_modules/phaser/types"
     ],
     "types": [
-        "phaser"
+      "phaser"
     ]
   }
 }

@@ -10,20 +10,14 @@ export function Update () {
   cursors = scene.input.keyboard.createCursorKeys()
 
   if (cursors.left.isDown) {
-    player.setVelocityX(-SIDE_SPEED)
-
-    player.anims.play('left', true)
+    player.body.setVelocityX(-SIDE_SPEED)
   } else if (cursors.right.isDown) {
-    player.setVelocityX(SIDE_SPEED)
-
-    player.anims.play('right', true)
+    player.body.setVelocityX(SIDE_SPEED)
   } else {
-    player.setVelocityX(0)
-
-    player.anims.play('turn')
+    player.body.setVelocityX(0)
   }
 
   if (cursors.up.isDown && player.body.touching.down) {
-    player.setVelocityY(-530)
+    player.body.setVelocityY(-530)
   }
 }
