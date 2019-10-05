@@ -8,6 +8,9 @@ let platforms: Phaser.GameObjects.Group,
 const SIDE_SPEED = 250
 
 export class Game extends Phaser.Scene {
+  private separator: Phaser.GameObjects.Rectangle
+  private ground: Phaser.GameObjects.Rectangle
+
   constructor () {
     super({
       key: SCENE.game
@@ -15,17 +18,14 @@ export class Game extends Phaser.Scene {
   }
 
   public create () {
+    this.separator = this.add.rectangle(400, 300, 50, 200, 0xff0000, 0.5)
+    this.ground = this.add.rectangle(400, 380, 800, 20, 0xfff000, 0.5)
+
     platforms = this.physics.add.staticGroup()
 
-    platforms.create(400, 400, 'ground')
-      .setScale(2)
-      .refreshBody()
+    platforms.add(this.separator)
+    platforms.add(this.ground)
 
-    platforms.create(600, 270, 'ground')
-    platforms.create(50, 180, 'ground')
-    platforms.create(750, 120, 'ground')
-
-    // player = this.physics.add.sprite(100, 300, 'dude')
     player = this.physics.add.existing(
       this.add.ellipse(50, 50, 50, 50, 0x55555555),
       false
@@ -57,6 +57,7 @@ export class Game extends Phaser.Scene {
     })
 
     this.physics.add.collider(player, platforms)
+    this.physics.add.collider(player, this.separator)
   }
 
   public update () {
@@ -71,7 +72,7 @@ export class Game extends Phaser.Scene {
     }
 
     if (cursors.up.isDown && player.body.touching.down) {
-      player.body.setVelocityY(-530)
+      player.body.setVelocityY(-730)
     }
   }
 }

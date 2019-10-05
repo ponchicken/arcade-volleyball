@@ -3,3 +3,11 @@ export const SCENE = {
   menu: 'menu',
   game: 'game'
 }
+
+export const SPRITE = {
+  dude: 'dude',
+  ground: 'ground',
+  star: 'star',
+  bomb: 'bomb',
+  sky: 'sky'
+}

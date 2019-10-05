@@ -1,4 +1,4 @@
-import { SCENE } from '../data'
+import { SCENE, SPRITE } from '../data'
 
 import skyImage from '~/assets/images/sky.png'
 import groundImage from '~/assets/images/platform.png'
@@ -15,11 +15,15 @@ export class Load extends Phaser.Scene {
 
   // public init () {}
   public preload () {
-    this.load.image('sky', skyImage)
-    this.load.image('ground', groundImage)
-    this.load.image('star', startImage)
-    this.load.image('bomb', bombImage)
-    this.load.spritesheet('dude',
+    const {
+      sky, ground, star, bomb, dude
+    } = SPRITE
+
+    this.load.image(sky, skyImage)
+    this.load.image(ground, groundImage)
+    this.load.image(star, startImage)
+    this.load.image(bomb, bombImage)
+    this.load.spritesheet(dude,
       dudeImage,
       { frameWidth: 32, frameHeight: 48 }
     )
