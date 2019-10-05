@@ -1,8 +1,9 @@
 import 'phaser'
 
-import { Create, Preload, Update } from './Setup'
+// import { Create, Preload, Update } from './Setup'
+import * as Scene from './scenes'
 
-var config: Phaser.Types.Core.GameConfig = {
+const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   width: 800,
   height: 400,
@@ -15,11 +16,9 @@ var config: Phaser.Types.Core.GameConfig = {
       debug: true
     }
   },
-  scene: {
-    preload: Preload,
-    create: Create,
-    update: Update
-  }
+  scene: [
+    Scene.Load, Scene.Menu, Scene.Game
+  ]
 }
 
 export const game = new Phaser.Game(config)
