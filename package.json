@@ -33,6 +33,6 @@
   },
   "dependencies": {
     "assets": "^3.0.1",
-    "phaser": "^3.19.0"
+    "phaser": "3.19.0"
   }
 }

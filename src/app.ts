@@ -1,6 +1,5 @@
 import 'phaser'
 
-// import { Create, Preload, Update } from './Setup'
 import * as Scene from './scenes'
 
 const config: Phaser.Types.Core.GameConfig = {
@@ -10,9 +9,9 @@ const config: Phaser.Types.Core.GameConfig = {
   physics: {
     default: 'arcade',
     arcade: {
-      // gravity: {
-      //   y: 1000
-      // },
+      gravity: {
+        y: 100
+      },
       debug: true
     }
   },
