@@ -17,17 +17,18 @@ export class Game extends Phaser.Scene {
   public create () {
     this.matter.world.setBounds()
 
-    this.player = this.add.ellipse(50, 50, 50, 50, 0x555599ff)
+    this.player = this.add.ellipse(50, 50, 40, 40, 0x555599ff)
     this.matter.add.gameObject(this.player, {
-      chamfer: { radius: 25 },
+      chamfer: { radius: 20 },
       density: 0.01,
-      frictionAir: 0,
+      frictionAir: 0.1,
+      fircition: 2,
       timeScale: 2
     })
 
-    this.ball = this.add.ellipse(400, 100, 50, 50, 0x55ff5555)
+    this.ball = this.add.ellipse(400, 100, 60, 60, 0x55ff5555)
     this.matter.add.gameObject(this.ball, {
-      chamfer: { radius: 25 },
+      chamfer: { radius: 30 },
       restitution: 1,
       frictionAir: 0,
       fircition: 0,
