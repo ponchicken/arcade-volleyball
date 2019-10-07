@@ -18,14 +18,14 @@ export class Game extends Phaser.Scene {
   }
 
   public create () {
-    this.separator = this.add.rectangle(400, 300, 10, 200, 0xff0000, 0.5)
+    // this.separator = this.add.rectangle(400, 300, 10, 200, 0xff0000, 0.5)
     this.ground = this.add.rectangle(400, 400, 800, 20, 0x004099, 0.5)
     this.ball = this.add.ellipse(400, 50, 50, 50, 0x5555f555) as any
 
     platforms = this.physics.add.staticGroup()
 
     platforms
-      .add(this.separator)
+      // .add(this.separator)
       .add(this.ground)
 
     player = this.add.ellipse(50, 50, 50, 50, 0x55555555) as any
@@ -33,17 +33,18 @@ export class Game extends Phaser.Scene {
     this.physics.add.existing(player)
     this.physics.add.existing(this.ball)
 
+    const ballBounce = 1
     player.body
-      .setBounce(0.5, 0.5)
+      .setBounce(ballBounce, ballBounce)
       .setCollideWorldBounds(true, 0.5, 0.5)
       .setCircle(25)
-      .setGravityY(800)
+      .setGravityY(400)
 
-    const ballBounce = 0.8
     this.ball.body
       .setCollideWorldBounds(true, ballBounce, ballBounce)
       .setBounce(ballBounce, ballBounce)
-      .setGravityY(100)
+      // .setGravityY(100)
+      .setCircle(25)
     // .setVelocity(150)
 
     this.anims.create({
@@ -86,7 +87,7 @@ export class Game extends Phaser.Scene {
 
     if (cursors.up.isDown) {
     // if (cursors.up.isDown && player.body.touching.down) {
-      player.body.setVelocityY(-550)
+      player.body.setVelocityY(-350)
     }
 
     if (cursors.down.isDown) {

@@ -16,6 +16,7 @@
     "declaration": true,
     "typeRoots": [
       "./node_modules/@types",
+      "./node_modules/@types/matter-js",
       "./node_modules/phaser/types"
     ],
     "types": [

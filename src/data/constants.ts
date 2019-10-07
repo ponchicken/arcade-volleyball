@@ -1,7 +1,8 @@
 export const SCENE = {
   load: 'load',
   menu: 'menu',
-  game: 'game'
+  game: 'game',
+  matter: 'matter'
 }
 
 export const SPRITE = {

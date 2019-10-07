@@ -7,16 +7,16 @@ const config: Phaser.Types.Core.GameConfig = {
   width: 800,
   height: 400,
   physics: {
-    default: 'arcade',
-    arcade: {
+    default: 'matter',
+    matter: {
       gravity: {
-        y: 100
+        y: 0.3
       },
       debug: true
     }
   },
   scene: [
-    Scene.Load, Scene.Menu, Scene.Game
+    Scene.Load, Scene.Menu, Scene.Game, Scene.MatterScene
   ]
 }
 

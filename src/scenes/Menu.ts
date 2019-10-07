@@ -9,6 +9,6 @@ export class Menu extends Phaser.Scene {
   }
 
   public create () {
-    this.scene.start(SCENE.game)
+    this.scene.start(SCENE.matter)
   }
 }
