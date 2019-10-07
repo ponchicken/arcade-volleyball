@@ -16,7 +16,7 @@ const config: Phaser.Types.Core.GameConfig = {
     }
   },
   scene: [
-    Scene.Load, Scene.Menu, Scene.Game, Scene.MatterScene
+    Scene.Load, Scene.Menu, Scene.Game
   ]
 }
 
