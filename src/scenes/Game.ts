@@ -17,12 +17,13 @@ export class Game extends Phaser.Scene {
   public create () {
     this.matter.world.setBounds()
 
-    this.player = this.add.ellipse(50, 50, 60, 60, 0x555599ff)
+    this.player = this.add.rectangle(50, 50, 60, 60, 0x555599ff)
     this.matter.add.gameObject(this.player, {
-      chamfer: { radius: 30 },
-      density: 0.1,
-      frictionAir: 0.1,
-      timeScale: 2
+      // chamfer: { radius: 30 },
+      density: 0.05,
+      frictionAir: 0,
+      friction: 5
+      // timeScale: 3
     })
 
     this.ball = this.add.ellipse(400, 100, 60, 60, 0x55ff5555)
@@ -36,7 +37,7 @@ export class Game extends Phaser.Scene {
 
     this.separator = this.add.rectangle(400, 300, 10, 200, 0xff0000, 0.5)
     this.ground = this.add.rectangle(400, 400, 800, 20, 0x004099, 0.5)
-    this.matter.add.gameObject(this.ground, { isStatic: true })
+    this.matter.add.gameObject(this.ground, { isStatic: true, friction: 5 })
     this.matter.add.gameObject(this.separator, { isStatic: true })
 
     this.matter.add.mouseSpring({})
@@ -60,7 +61,7 @@ export class Game extends Phaser.Scene {
 
     if (cursors.up.isDown) {
     // if (cursors.up.isDown && this.player.body.touching.down) {
-      this.player.setVelocityY(-PLAYER_SPEED)
+      this.player.setVelocityY(-PLAYER_SPEED - 10)
     }
 
     if (cursors.down.isDown) {
