@@ -1,5 +1,5 @@
 
-const PLAYER_SPEED = 10
+const PLAYER_SPEED = 12
 
 class Player {
   private scene: Phaser.Scene

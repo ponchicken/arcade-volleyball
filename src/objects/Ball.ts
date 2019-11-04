@@ -9,11 +9,12 @@ class Ball {
 
     scene.matter.add.gameObject(this.ball, {
       chamfer: { radius: 30 },
-      density: 0.05,
+      density: 0.002,
       restitution: 1,
       frictionAir: 0.01,
       friction: 0,
-      timeScale: 0.5
+      // timeScale: 0.5,
+      inertia: Infinity
     })
   }
 }

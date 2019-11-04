@@ -11,10 +11,11 @@ class World {
 
     scene.matter.add.gameObject(this.ground, {
       isStatic: true,
-      friction: 5
+      friction: 0
     })
     scene.matter.add.gameObject(this.separator, {
-      isStatic: true
+      isStatic: true,
+      friction: 0
     })
   }
 }
