@@ -81,8 +81,8 @@ export class Arcade extends Phaser.Scene {
     } else if (cursors.right.isDown) {
       player.body.setVelocityX(SIDE_SPEED)
     } else {
-      const velocityX = player.body.velocity.x
-      player.body.setVelocityX(velocityX / 1.1)
+      // const velocityX = player.body.velocity.x
+      // player.body.setVelocityX(velocityX / 1.1)
     }
 
     if (cursors.up.isDown) {

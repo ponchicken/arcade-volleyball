@@ -34,6 +34,9 @@
   },
   "dependencies": {
     "assets": "^3.0.1",
-    "phaser": "3.19.0"
+    "matter-js": "0.14.2",
+    "phaser": "3.19.0",
+    "phaser-matter-collision-plugin": "0.10.2",
+    "scene": "0.1.0"
   }
 }

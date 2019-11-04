@@ -1,70 +1,49 @@
 import { SCENE } from '../data'
+import { Scene } from '~types'
+import { Player, Ball, World } from '~objects'
 
-const PLAYER_SPEED = 8
-
-export class Game extends Phaser.Scene {
-  private player: Phaser.GameObjects.Ellipse & any
+export class Game extends Scene {
+  private player1: Phaser.GameObjects.Ellipse & any
+  private player2: Phaser.GameObjects.Ellipse & any
   private ball: Phaser.GameObjects.Ellipse & any
-  private separator: Phaser.GameObjects.Rectangle
-  private ground: Phaser.GameObjects.Rectangle
+  private world: any
+
+  private bodiesToBeMovedNextFrame: any
 
   constructor () {
     super({
       key: SCENE.game
     })
+
+    this.bodiesToBeMovedNextFrame = []
   }
 
   public create () {
     this.matter.world.setBounds()
 
-    this.player = this.add.ellipse(50, 50, 60, 60, 0x555599ff)
-    this.matter.add.gameObject(this.player, {
-      chamfer: { radius: 30 },
-      density: 0.1,
-      frictionAir: 0.1,
-      timeScale: 2
-    })
-
-    this.ball = this.add.ellipse(400, 100, 60, 60, 0x55ff5555)
-    this.matter.add.gameObject(this.ball, {
-      chamfer: { radius: 30 },
-      restitution: 1,
-      frictionAir: 0.01,
-      friction: 0,
-      timeScale: 0.5
-    })
-
-    this.separator = this.add.rectangle(400, 300, 10, 200, 0xff0000, 0.5)
-    this.ground = this.add.rectangle(400, 400, 800, 20, 0x004099, 0.5)
-    this.matter.add.gameObject(this.ground, { isStatic: true })
-    this.matter.add.gameObject(this.separator, { isStatic: true })
+    this.player1 = new Player(this, 50, 250)
+    this.player2 = new Player(this, 650, 250)
+    this.ball = new Ball(this)
+    this.world = new World(this)
 
     this.matter.add.mouseSpring({})
-    console.log(this.ball.body)
+
+    this.matter.world.on('collisionstart', event => {
+      event.pairs.forEach(pair => {
+        const { bodyA, bodyB } = pair
+
+        if (bodyA.gameObject === this.player1) {
+          if (bodyB.gameObject === this.ball) {
+            this.bodiesToBeMovedNextFrame.push({
+              body: bodyB.gameObject,
+              pair,
+              cb: () => {}
+            })
+          }
+        }
+      })
+    })
   }
 
-  public update () {
-    const cursors = this.input.keyboard.createCursorKeys()
-
-    // if (this.ball.body.speed > 10) {
-    //   this.ball.body.set()
-    // }
-
-    if (cursors.left.isDown) {
-      this.player.setVelocityX(-PLAYER_SPEED)
-    } else if (cursors.right.isDown) {
-      this.player.setVelocityX(PLAYER_SPEED)
-    } else {
-      // const velocityX = this.player.velocity.x
-    }
-
-    if (cursors.up.isDown) {
-    // if (cursors.up.isDown && this.player.body.touching.down) {
-      this.player.setVelocityY(-PLAYER_SPEED)
-    }
-
-    if (cursors.down.isDown) {
-      this.player.setVelocityY(PLAYER_SPEED)
-    }
-  }
+  public update () {}
 }
