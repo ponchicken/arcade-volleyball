@@ -20,22 +20,22 @@
   },
   "homepage": "https://github.com/ponchicken/arcade-volleyball#readme",
   "devDependencies": {
-    "@types/matter-js": "^0.10.3",
-    "@typescript-eslint/eslint-plugin": "^2.3.1",
-    "@typescript-eslint/parser": "^2.3.1",
-    "eslint": "^6.4.0",
+    "@types/matter-js": "0.10.4",
+    "@typescript-eslint/eslint-plugin": "2.6.1",
+    "@typescript-eslint/parser": "2.6.1",
+    "eslint": "6.6.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "parcel-bundler": "^1.12.3",
-    "typescript": "^3.6.3"
+    "parcel-bundler": "1.12.4",
+    "typescript": "3.7.2"
   },
   "dependencies": {
     "assets": "^3.0.1",
     "matter-js": "0.14.2",
-    "phaser": "3.19.0",
+    "phaser": "3.20.1",
     "phaser-matter-collision-plugin": "0.10.2",
     "scene": "0.1.0"
   }

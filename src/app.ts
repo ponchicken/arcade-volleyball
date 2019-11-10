@@ -5,8 +5,8 @@ import * as Scene from './scenes'
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
-  width: 800,
-  height: 500,
+  width: 400,
+  height: 250,
   physics: {
     default: 'matter',
     matter: {

@@ -21,24 +21,32 @@ export class Game extends Scene {
   public create () {
     this.matter.world.setBounds()
 
-    this.player1 = new Player(this, 50, 250)
-    this.player2 = new Player(this, 650, 250)
+    this.player1 = new Player(this, 25, 120, 0x559999f)
+    this.player2 = new Player(this, 250, 120, 0x995599f)
     this.ball = new Ball(this)
     this.world = new World(this)
 
-    this.matter.add.mouseSpring({})
+    console.log(this.player1)
 
     this.matter.world.on('collisionstart', event => {
       event.pairs.forEach(pair => {
         const { bodyA, bodyB } = pair
 
-        if (bodyA.gameObject === this.player1) {
-          if (bodyB.gameObject === this.ball) {
-            this.bodiesToBeMovedNextFrame.push({
-              body: bodyB.gameObject,
-              pair,
-              cb: () => {}
-            })
+        if (
+          bodyA.gameObject === this.player1.gameObject ||
+          bodyA.gameObject === this.player2.gameObject
+        ) {
+          if (bodyB.gameObject === this.ball.gameObject) {
+            this.ball.gameObject.setFillStyle(
+              bodyA.gameObject === this.player1.gameObject
+                ? 0x559999f
+                : 0x995599f
+            )
+            // this.bodiesToBeMovedNextFrame.push({
+            //   body: bodyB.gameObject,
+            //   pair,
+            //   cb: () => {}
+            // })
           }
         }
       })

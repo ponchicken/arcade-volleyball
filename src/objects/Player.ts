@@ -1,21 +1,21 @@
 
-const PLAYER_SPEED = 12
+const PLAYER_SPEED = 6
 
 class Player {
   private scene: Phaser.Scene
-  private player: Phaser.GameObjects.Ellipse & any
+  public gameObject: Phaser.GameObjects.Ellipse & any
 
   private canJump: boolean
   private jumpCooldownTimer: any
 
-  constructor (scene, x = 50, y = 250) {
+  constructor (scene, x = 12, y = 60, color = 0x555599f) {
     this.scene = scene
     this.canJump = true
 
-    this.player = this.scene.add.ellipse(x, y, 60, 60, 0x555599ff)
-    this.scene.matter.add.gameObject(this.player, {
-      chamfer: { radius: 30 },
-      density: 0.5,
+    this.gameObject = this.scene.add.ellipse(x, y, 30, 30, color)
+    this.scene.matter.add.gameObject(this.gameObject, {
+      chamfer: { radius: 15 },
+      density: 0.02,
       restitution: 0,
       frictionAir: 0.01,
       friction: 0,
@@ -30,29 +30,29 @@ class Player {
     const cursors = this.scene.input.keyboard.createCursorKeys()
 
     if (cursors.left.isDown) {
-      this.player.setVelocityX(-PLAYER_SPEED)
+      this.gameObject.setVelocityX(-PLAYER_SPEED)
     } else if (cursors.right.isDown) {
-      this.player.setVelocityX(PLAYER_SPEED)
-    } else if (this.player.body.velocity.x) {
-      this.player.setVelocityX(0)
+      this.gameObject.setVelocityX(PLAYER_SPEED)
+    } else if (this.gameObject.body.velocity.x) {
+      this.gameObject.setVelocityX(0)
     }
 
     if (cursors.up.isDown && this.canJump) {
-      this.player.setVelocityY(-PLAYER_SPEED)
+      this.gameObject.setVelocityY(-PLAYER_SPEED)
 
       // Add a slight delay between jumps since the bottom sensor will still collide for a few
       // frames after a jump is initiated
       this.canJump = false
       this.jumpCooldownTimer = this.scene.time.addEvent({
-        delay: 550,
+        delay: 250,
         callback: () => (this.canJump = true)
       })
-    } else if (this.player.body.velocity.y < -7) {
-      // this.player.setVelocityY(0)
+    } else if (this.gameObject.body.velocity.y < -7) {
+      // this.gameObject.setVelocityY(0)
     }
 
     if (cursors.down.isDown) {
-      this.player.setVelocityY(PLAYER_SPEED)
+      this.gameObject.setVelocityY(PLAYER_SPEED)
     }
   }
 }

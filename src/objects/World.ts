@@ -6,8 +6,8 @@ class World {
   constructor (scene) {
     this.scene = scene
 
-    this.separator = scene.add.rectangle(400, 400, 10, 200, 0xff0000, 0.5)
-    this.ground = scene.add.rectangle(400, 500, 800, 20, 0x004099, 0.5)
+    this.separator = scene.add.rectangle(200, 200, 5, 100, 0xff0000, 0.5)
+    this.ground = scene.add.rectangle(200, 250, 400, 10, 0x004099, 0.5)
 
     scene.matter.add.gameObject(this.ground, {
       isStatic: true,
